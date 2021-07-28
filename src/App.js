@@ -1,16 +1,18 @@
 import Header from "./components/Header.js"
+import ItemListContainer from "./components/ItemListContainer.js"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-const App = () =>{
+const App = () => {
 
 
-  return ( 
+  return (
 
     <>
-    <Header/>
-  </>
+      <Header />
+      <ItemListContainer Greeting={"Bienvenidos a The Lamp Stock"} />
+    </>
 
   )
 }
