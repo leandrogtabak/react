@@ -1,15 +1,14 @@
 import React from 'react';
 import "./Item.css"
 
-const Item = ({ usuario }) => {
-    //   return <li>{usuario.producto}</li>;
+const Item = ({ producto }) => {
     return (
-        <div className="col">
-            <div className="card Item mx-auto">
-                <img src="https://picsum.photos/250" className="card-img-top" alt="..." />
+        <div className="col p-5">
+            <div className="card Item">
+                <img src={producto.img} className="card-img-top" alt="..." />
                 <div className="card-body">
-                    <h5 className="card-title">{usuario.producto}</h5>
-                    <p className="card-text">${usuario.precio}</p>
+                    <h5 className="card-title">{producto.nombre}</h5>
+                    <p className="card-text">${producto.precio}</p>
                     <a href="#" className="btn btn-primary">Añadir al carrito</a>
                 </div>
             </ div>
