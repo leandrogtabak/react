@@ -3,9 +3,9 @@ import { faShoppingBasket } from "@fortawesome/free-solid-svg-icons"
 import './CartWidget.css'
 
 const CartWidget = () =>
-    <div className="CartWidget">
+    <a href=""><div className="CartWidget">
         <FontAwesomeIcon icon={faShoppingBasket} />
-    </div>
+    </div></a>
 
 
 export default CartWidget
