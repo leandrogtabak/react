@@ -29,7 +29,7 @@ const ItemDetailContainer = () => {
   const getItem = () => {
     const promesa = new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(productos.find(producto => producto.id == params.id))
+        resolve(productos.find(producto => producto.id === parseInt( params.id)))
       }, 2000)
 
       setEstado("pendiente")

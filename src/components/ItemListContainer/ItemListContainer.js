@@ -24,7 +24,7 @@ const ItemListContainer = () => {
       setTimeout(() => {
         
         if(params.id){
-          resolve(productos.filter(producto=>producto.categoria == params.id))
+          resolve(productos.filter(producto=>producto.categoria === parseInt(params.id)))
           
           
       }
