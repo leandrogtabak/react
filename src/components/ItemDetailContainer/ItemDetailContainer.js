@@ -42,7 +42,6 @@ const ItemDetailContainer = () => {
 
     return (
       <div className="container-fluid d-flex m-auto flex-column">
-        <p className="text-center fs-2">Lista de productos</p>
         <Spinner animation="border" role="status" className="mx-auto mt-5">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
@@ -53,7 +52,7 @@ const ItemDetailContainer = () => {
   //Devuelvo ItemDetail
 
   return (
-    <div>
+    <div className = "m-auto">
       <ItemDetail unItem={unItem} />
     </div>
   )

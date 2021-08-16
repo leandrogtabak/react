@@ -48,7 +48,6 @@ const ItemListContainer = () => {
     return (
 
       <div className="container-fluid d-flex m-auto flex-column">
-        <p className="text-center fs-2">Lista de productos</p>
         <Spinner animation="border" role="status" className="mx-auto mt-5">
           <span className="visually-hidden">Loading...</span>
         </Spinner>
@@ -58,7 +57,6 @@ const ItemListContainer = () => {
   
   return (
     <div className="container-fluid">
-      <p className="text-center fs-2">Lista de productos</p>
       <ItemList products={products} />
     </div>
   )

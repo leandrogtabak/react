@@ -28,17 +28,17 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     }
 
     return (
-        < > 
-            <div className="d-flex justify-content-center border border-primary ItemCount"> 
-                <button className="btn btn-outline-primary" onClick={restarContador}> <FontAwesomeIcon icon={faChevronDown} /></button>
-                <p className="mx-3 my-auto">{contador}</p>
-                <button className="btn btn-outline-primary" onClick={aumentarContador}><FontAwesomeIcon icon={faChevronUp} /></button>
+        <div className="ItemCount">
+            <div className="d-flex justify-content-center border border-primary">
+                <button className="btn btn-outline-primary mx-auto" onClick={restarContador}> <FontAwesomeIcon icon={faChevronDown} /></button>
+                <p className="my-auto">{contador}</p>
+                <button className="btn btn-outline-primary mx-auto" onClick={aumentarContador}><FontAwesomeIcon icon={faChevronUp} /></button>
             </div>
-            <div className="d-flex justify-content-center">
-                <button className="btn btn-outline-primary m-1" onClick={confirmar}>Confirmar</button>
+            <div class="d-grid gap-2">
+                <button className="btn btn-outline-primary" onClick={confirmar}>Confirmar</button>
             </div>
 
-        </>
+        </div>
 
     )
 
