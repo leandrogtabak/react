@@ -1,9 +1,9 @@
 //import ItemCount from "../ItemCount/ItemCount.js"
 import React, { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList.js"
-import './ItemListContainer.css'
+import ItemList from "./ItemList.js"
+import '../estilos/ItemListContainer.css'
 import Spinner from 'react-bootstrap/Spinner'
-import productos from "../../productos.js"
+import productos from "../productos.js"
 import {useParams} from "react-router-dom"
 
 

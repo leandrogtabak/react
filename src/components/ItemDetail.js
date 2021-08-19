@@ -1,27 +1,35 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import {Link} from "react-router-dom"
-import "./ItemDetail.css"
-import ItemCount from "../ItemCount/ItemCount.js"
+import "../estilos/ItemDetail.css"
+import ItemCount from "./ItemCount.js"
+import { useContext } from "react"
+import { contexto } from "./CartContext"
 
 const ItemDetail = ({ unItem }) => {
 
-    const [unidades, setUnidades] = useState(1);
+ 
     const [show, setShow] = useState(true);
+
+    const {addItem} = useContext(contexto)
 
 
     const onAdd = (cantidad) => {
-        //console.log("State Uplifting")
-        // console.log("Recibi la cantidad de un componente hijo")
+     
+        const item_para_agregar = {
+            item : unItem ,
+            quantity : cantidad
+        }
 
-        setUnidades(cantidad)
+        addItem(item_para_agregar)
+
+
         setShow(false);
        
 
     }
-    useEffect(() => {
-        // Actualiza el título del documento usando la API del navegador
-       console.log(unidades)
-      });
+
+    
+    
 
     return (
         <div className="card ItemDetail">
@@ -41,7 +49,7 @@ const ItemDetail = ({ unItem }) => {
            
         </div>
     )
-    console.log(unidades)
+ 
 };
 
 

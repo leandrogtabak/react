@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ItemDetail from "../ItemDetail/ItemDetail.js"
+import ItemDetail from "./ItemDetail.js"
 import Spinner from 'react-bootstrap/Spinner'
-import productos from "../../productos.js"
-import './ItemDetailContainer.css'
+import productos from "../productos.js"
+import '../estilos/ItemDetailContainer.css'
 import {useParams} from "react-router-dom"
 
 //Utilizo un item en particular (luego vendra del id del elemento del itemList donde se haga click)

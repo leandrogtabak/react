@@ -1,9 +1,10 @@
-import Header from "./components/Header/Header.js"
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer.js"
-import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer.js"
-import Cart from "./components/Cart/Cart.js"
+import Header from "./components/Header.js"
+import ItemListContainer from "./components/ItemListContainer.js"
+import ItemDetailContainer from "./components/ItemDetailContainer.js"
+import Cart from "./components/Cart.js"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom"
+import CustomProvider from "./components/CartContext"
 
 
 
@@ -11,22 +12,23 @@ const App = () => {
 
 
   return (
+    <CustomProvider>
+      <BrowserRouter>
+        <div className="mx-auto">
 
-    <BrowserRouter>
-      <div className="mx-auto">
+          <Header />
+          <div className="container-fluid d-flex flex-column">
+            <Switch>
+              <Route path="/" component={ItemListContainer} exact />
+              <Route path="/categoria/:id" component={ItemListContainer} />
+              <Route path="/item/:id" component={ItemDetailContainer} />
+              <Route path="/cart" component={Cart} />
 
-        <Header />
-        <div className="container-fluid d-flex flex-column">
-          <Switch>
-            <Route path="/" component={ItemListContainer} exact />
-            <Route path="/cart" component={Cart} />
-            <Route path="/categoria/:id" component={ItemListContainer} />
-            <Route path="/item/:id" component={ItemDetailContainer} />
-
-          </Switch>
+            </Switch>
+          </div>
         </div>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </CustomProvider>
 
 
   )
