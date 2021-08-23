@@ -33,7 +33,7 @@ const ItemDetail = ({ unItem }) => {
 
     return (
         <div className="card ItemDetail">
-            <img src={unItem.img} class="card-img-top" alt="..." />
+            <img src={unItem.img} className="card-img-top" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{unItem.nombre}</h5>
                 <p className="card-text m-1">{unItem.detalles}</p>

@@ -7,7 +7,6 @@ const { Consumer, Provider } = contexto
 const CustomProvider = ({ children }) => {
 
     const [carrito, setCarrito] = useState([])
-    const [cantidad, setCantidad] = useState(0)
 
     const addItem = (item) => {
 
