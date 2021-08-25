@@ -14,8 +14,8 @@ const NavBar = () => {
                 <Navbar.Brand as={Link} to="/">The Lamp Stock</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link as={Link} to="/">Home</Nav.Link>
-                    <Nav.Link as={Link} to="/categoria/1">Categoria 1</Nav.Link>
-                    <Nav.Link as={Link} to="/categoria/2">Categoria 2</Nav.Link>
+                    <Nav.Link as={Link} to="/categoria/escritorio">Lamparas de escritorio</Nav.Link>
+                    <Nav.Link as={Link} to="/categoria/pie">Lamparas de pie</Nav.Link>
                 </Nav>
               <CartWidget />
                 

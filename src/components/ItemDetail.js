@@ -29,7 +29,6 @@ const ItemDetail = ({ unItem }) => {
     }
 
     
-    
 
     return (
         <div className="card ItemDetail">
