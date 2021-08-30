@@ -4,6 +4,8 @@ export const contexto = createContext()
 
 const { Consumer, Provider } = contexto
 
+
+
 const CustomProvider = ({ children }) => {
 
     const [carrito, setCarrito] = useState([])
@@ -23,8 +25,8 @@ const CustomProvider = ({ children }) => {
             //declaro un nuevo carrito copia del carrito anterior
             let carrito_clon = [...carrito]
             //reemplazo el carrito original, con el nuevo, actualizado
-            carrito_clon.splice(carrito.findIndex(element => element.item.id === item.item.id),1,nuevo_item)
-           //seteo el carrito actualizado
+            carrito_clon.splice(carrito.findIndex(element => element.item.id === item.item.id), 1, nuevo_item)
+            //seteo el carrito actualizado
             setCarrito([...carrito_clon])
 
         } else {
@@ -49,6 +51,9 @@ const CustomProvider = ({ children }) => {
     const isInCart = (id) => {
         return carrito.find(item => item.item.id === id)
     }
+
+  
+    
 
     const contexto_para_consumir = { carrito, addItem, removeItem, clear }
 

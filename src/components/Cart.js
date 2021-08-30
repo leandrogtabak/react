@@ -1,19 +1,61 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { contexto } from "./CartContext.js";
 import ItemCart from "./ItemCart.js"
 import { Link } from "react-router-dom"
+import { firestore, getTimestamp } from "../firebase";
+import Alert from "./Alerta.js"
+
+const mostrarVacio = () => {
+    return (
+        <div className="d-flex flex-column mx-auto align-items-center my-5">
+            <h5 >No hay productos en el carrito</h5>
+            <Link to={"/"} className="btn btn-primary my-4">Volver a comprar</Link>
+        </div>)
+}
+
+const mostrarId = (orden) => {
+
+    return <Alert mostrar={true} orden={orden} />
+
+
+}
+
+
 
 const Cart = () => {
 
-    const { carrito, clear } = useContext(contexto)
+    const { carrito, clear } = useContext(contexto);
+    let [showOrder, setShowOrder] = useState(0);
 
-    const mostrarVacio = () => {
-        return(
-    <div className="d-flex flex-column mx-auto align-items-center my-5">
-        <h5 >No hay productos en el carrito</h5>
-        <Link to={"/"} className="btn btn-primary my-4">Volver a comprar</Link>
-    </div>)
+    useEffect(() => {
+        if (showOrder) {
+            console.log(`El numero de orden es: ${showOrder}`);
+            clear();
+        }
+    }, [showOrder]);
+
+
+    const addOrder = (cart) => {
+        if (cart.length) {
+            const usuario = { nombre: "Leandro Tabak", email: "leandrogtabak@test.com", telefono: 1122223333 }
+            //Referencia a la DB
+            const db = firestore
+
+            //Referencia a una coleccion
+
+            const collection = db.collection("ordenes")
+            let total = cart.reduce((total, item) => (total + item.item.precio * item.quantity), 0)
+            const query = collection.add({ buyer: usuario, items: cart, date: getTimestamp(), total: total })
+
+            query.then((resultado) => {
+                setShowOrder(resultado.id)
+
+
+            })
+        }
     }
+
+
 
     return (
         <div>
@@ -43,20 +85,23 @@ const Cart = () => {
             </table>
 
             {carrito.length === 0 ? mostrarVacio() : null}
-        
+
             <div className="d-flex justify-content-end me-5">
                 <h5>Total: <span className="text-success"> ${carrito.length > 0 ? carrito.reduce((total, item) => (total + item.item.precio * item.quantity), 0) : " 0"} </span></h5>
             </div>
 
-          
+
 
             <div className=" d-flex align-items-center flex-column m-auto">
                 <button style={{ width: "20em", }} onClick={() => clear()} type="button" className="btn btn-secondary m-1">Vaciar Carrito</button>
-                <button style={{ width: "20em" }} type="button" className="btn btn-success m-1">Finalizar compra</button>
+                <button style={{ width: "20em" }} onClick={() => addOrder(carrito)} type="button" className="btn btn-success m-1">Finalizar compra</button>
             </div>
+            {showOrder ? mostrarId(showOrder) : null}
 
 
         </div>
+
+
     )
 }
 
