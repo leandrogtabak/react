@@ -40,7 +40,7 @@ const ItemDetail = ({ unItem }) => {
                 <p className="card-text mb-2">${unItem.precio}</p>
 
                 <div class="d-grid gap-2">
-                    {show ? <ItemCount stock={unItem.stock} initial={unItem.stock >= 1 ? 1 : 0} onAdd={onAdd} />: <Link to={"/cart"} className="btn btn-primary">Terminar Compra</Link>}
+                    {show ? <ItemCount stock={unItem.stock} initial={unItem.stock >= 1 ? 1 : 0} onAdd={onAdd} />: <Link to={"/cart"} className="btn btn-primary">Ir al carrito</Link>}
                     
                 </div>
 

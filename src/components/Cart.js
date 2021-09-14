@@ -13,47 +13,46 @@ const mostrarVacio = () => {
         </div>)
 }
 
-const mostrarId = (orden) => {
+// const mostrarId = (orden) => {
 
-    return <Alert mostrar={true} orden={orden} />
+//     return <Alert mostrar={true} orden={orden} />
 
 
-}
+// }
 
 
 
 const Cart = () => {
 
     const { carrito, clear } = useContext(contexto);
-    let [showOrder, setShowOrder] = useState(0);
+    // let [showOrder, setShowOrder] = useState(0);
 
-    useEffect(() => {
-        if (showOrder) {
-            console.log(`El numero de orden es: ${showOrder}`);
-            clear();
-        }
-    }, [showOrder]);
-
-
-    const addOrder = (cart) => {
-        if (cart.length) {
-            const usuario = { nombre: "Leandro Tabak", email: "leandrogtabak@test.com", telefono: 1122223333 }
-            //Referencia a la DB
-            const db = firestore
-
-            //Referencia a una coleccion
-
-            const collection = db.collection("ordenes")
-            let total = cart.reduce((total, item) => (total + item.item.precio * item.quantity), 0)
-            const query = collection.add({ buyer: usuario, items: cart, date: getTimestamp(), total: total })
-
-            query.then((resultado) => {
-                setShowOrder(resultado.id)
+    // useEffect(() => {
+    //     if (showOrder) {
+    //         clear();
+    //     }
+    // }, [showOrder]);
 
 
-            })
-        }
-    }
+    // const addOrder = (cart) => {
+    //     if (cart.length) {
+    //         const usuario = { nombre: "Leandro Tabak", email: "leandrogtabak@test.com", telefono: 1122223333 }
+    //         //Referencia a la DB
+    //         const db = firestore
+
+    //         //Referencia a una coleccion
+
+    //         const collection = db.collection("ordenes")
+    //         let total = cart.reduce((total, item) => (total + item.item.precio * item.quantity), 0)
+    //         const query = collection.add({ buyer: usuario, items: cart, date: getTimestamp(), total: total })
+
+    //         query.then((resultado) => {
+    //             setShowOrder(resultado.id)
+
+
+    //         })
+    //     }
+    // }
 
 
 
@@ -93,10 +92,12 @@ const Cart = () => {
 
 
             <div className=" d-flex align-items-center flex-column m-auto">
-                <button style={{ width: "20em", }} onClick={() => clear()} type="button" className="btn btn-secondary m-1">Vaciar Carrito</button>
-                <button style={{ width: "20em" }} onClick={() => addOrder(carrito)} type="button" className="btn btn-success m-1">Finalizar compra</button>
+                <button style={{ width: "20em" }} onClick={() => clear()} type="button" className="btn btn-secondary m-1">Vaciar Carrito</button>
+                {/* <button style={{ width: "20em" }} onClick={() => addOrder(carrito)} type="button" className="btn btn-success m-1">Continuar compra</button> */}
+                <Link to={"/formulario"} style={{ width: "20em" }} className="btn btn-success m-1">Continuar compra</Link>
             </div>
-            {showOrder ? mostrarId(showOrder) : null}
+            {/* {showOrder ? mostrarId(showOrder) : null} */}
+
 
 
         </div>

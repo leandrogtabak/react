@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+
+// Recordar hacer la alerta mas flexible para poder colocar el nombre que uno quiera
 const Alerta = ({ mostrar, orden }) => {
 
     const [show, setShow] = useState(mostrar);
