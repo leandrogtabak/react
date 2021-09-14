@@ -5,14 +5,13 @@ import '../estilos/ItemDetailContainer.css'
 import { useParams } from "react-router-dom"
 import { firestore } from "../firebase"
 
-//Utilizo un item en particular (luego vendra del id del elemento del itemList donde se haga click)
 
 
 const ItemDetailContainer = () => {
 
   const [unItem, setItem] = useState([])
   const [estado, setEstado] = useState("pendiente");
-  const params = useParams()
+  const { id } = useParams()
 
 
   useEffect(() => {
@@ -21,17 +20,14 @@ const ItemDetailContainer = () => {
     const db = firestore;
     const collection = db.collection("productos");
 
+    if (id) {
 
 
-
-    if (params.id) {
-
-
-      const filtro = collection.doc(params.id)
+      const filtro = collection.doc(id)
       const query = filtro.get()
 
 
-      //le saco las cosas a la promesa
+
       query.then((resultados) => {
         const id = resultados.id;
 
@@ -48,7 +44,7 @@ const ItemDetailContainer = () => {
     setEstado("terminado");
   }
 
-  }, [params.id])
+  }, [id])
 
 if (estado === "pendiente") {
 
@@ -61,7 +57,6 @@ if (estado === "pendiente") {
 
 }
 
-//Devuelvo ItemDetail
 
 return (
   <div className="m-auto">

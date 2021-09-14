@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { contexto } from "./CartContext.js";
 import { Form, Row, Col, Button } from "react-bootstrap"
 import Alert from "./Alerta.js"
+import validator from 'validator';
 
 
 const mostrarId = (orden) => {
@@ -12,7 +13,6 @@ const mostrarId = (orden) => {
 
 
 }
-
 
 
 const Formulario = () => {
@@ -28,7 +28,6 @@ const Formulario = () => {
 
     useEffect(() => {
         if (showOrder) {
-        
             clear();
         }
     }, [showOrder]);
@@ -36,11 +35,10 @@ const Formulario = () => {
 
     const addOrder = (cart) => {
         if (cart.length) {
-            const usuario = { nombre: nombre, email: email, telefono: telefono }
-            //Referencia a la DB
-            const db = firestore
 
-            //Referencia a una coleccion
+            const usuario = { nombre: nombre, email: email, telefono: telefono }
+  
+            const db = firestore
 
             const collection = db.collection("ordenes")
             let total = cart.reduce((total, item) => (total + item.item.precio * item.quantity), 0)
@@ -57,21 +55,21 @@ const Formulario = () => {
 
 
     const guardarNombre = (e) => {
-        //console.log("Estan escribiendo en el input nombre")
+
         const input = e.target
         const valor = input.value
         setNombre(valor)
     }
 
     const guardarTelefono = (e) => {
-        //console.log("Estan escribiendo en el input nombre")
+
         const input = e.target
         const valor = input.value
         setTelefono(valor)
     }
 
     const guardarEmail = (e) => {
-        //console.log("Estan escribiendo en el input nombre")
+
         const input = e.target
         const valor = input.value
         setEmail(valor)
@@ -79,20 +77,21 @@ const Formulario = () => {
 
     const realizarPedido = (e) => {
         e.preventDefault()
-        //console.log("Guardando pedido")
-        //const buyer = {nombre,telefono,email}
+
         if (validarCampos()) {
             setError(false)
             addOrder(carrito)
             e.target.reset()
-           
+
         } else {
             setError(true)
         }
     }
 
     const validarCampos = () => {
-        if (nombre.trim().length && telefono.trim().length && email.trim().length) {
+
+
+        if (nombre.trim().length && validator.isMobilePhone(telefono) && validator.isEmail(email)) {
             return true
         } else {
             return false
@@ -104,15 +103,14 @@ const Formulario = () => {
     return (
 
         <>
-            {/* Hacer mensaje con un alert (componente alert que tenemos) */}
-            {error ? <p>Por favor completar todos los campos</p> : null}
+            {error ? <p>Por favor completar correctamente todos los campos</p> : null}
 
 
             <Form onSubmit={realizarPedido} className="my-5" style={{ width: "75%" }}>
                 <Row className="mb-3">
                     <Form.Group as={Col}>
                         <Form.Label>Nombre y apellido</Form.Label>
-                        <Form.Control placeholder="Ingresar nombre completo..." onChange={guardarNombre}  />
+                        <Form.Control placeholder="Ingresar nombre completo..." onChange={guardarNombre} />
                     </Form.Group>
 
                 </Row>
@@ -127,14 +125,12 @@ const Formulario = () => {
                 </Form.Group>
 
 
-                <Button   variant="primary" type="submit">
+                <Button variant="primary" type="submit">
                     Enviar y finalizar compra
                 </Button>
             </Form>
 
             {showOrder ? mostrarId(showOrder) : null}
-
-
 
 
 

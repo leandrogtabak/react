@@ -1,4 +1,3 @@
-//import ItemCount from "../ItemCount/ItemCount.js"
 import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList.js"
 import '../estilos/ItemListContainer.css'
@@ -7,16 +6,13 @@ import { useParams } from "react-router-dom"
 import { firestore } from "../firebase";
 
 
-
-
 const ItemListContainer = () => {
 
 
   const [products, setProducts] = useState([])
   const [estado, setEstado] = useState("pendiente");
-  const params = useParams()
+  const { id } = useParams()
 
-  //Uso el hook useEffect para pedir los datos al servidor (ahora esa tarea se simula con una promesa con un delay dentro)
 
   useEffect(() => {
 
@@ -25,21 +21,17 @@ const ItemListContainer = () => {
     const collection = db.collection("productos");
 
 
+    if (id) {
 
 
-    if (params.id) {
-
-
-      const filtro = collection.where("categoria", "==", params.id)
+      const filtro = collection.where("categoria", "==", id)
       const query = filtro.get()
 
 
-      //le saco las cosas a la promesa
       query.then((resultados) => {
         const resultados_parseado = []
-        //Recorro cada uno de los documentos
+
         resultados.forEach((documento) => {
-          //El ID esta separado del resto de la data
           const id = documento.id
           const data = documento.data()
           const data_final = { id, ...data }
@@ -54,9 +46,9 @@ const ItemListContainer = () => {
       const query = collection.get();
       query.then((resultados) => {
         const resultados_parseado = []
-        //Recorro cada uno de los documentos
+
         resultados.forEach((documento) => {
-          //El ID esta separado del resto de la data
+
           const id = documento.id
           const data = documento.data()
           const data_final = { id, ...data }
@@ -72,7 +64,7 @@ const ItemListContainer = () => {
     }
 
 
-  }, [params.id])
+  }, [id])
 
 
 

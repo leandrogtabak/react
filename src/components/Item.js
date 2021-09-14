@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from "react-router-dom"
 
 import "../estilos/Item.css"
-//probando cosas
+
+
 const Item = ({ producto }) => {
     return (
         <div className="col p-5">

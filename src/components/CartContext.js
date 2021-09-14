@@ -1,10 +1,7 @@
 import { createContext, useState } from "react"
-
 export const contexto = createContext()
 
 const { Consumer, Provider } = contexto
-
-
 
 const CustomProvider = ({ children }) => {
 
@@ -12,22 +9,15 @@ const CustomProvider = ({ children }) => {
 
     const addItem = (item) => {
 
-        /* const copia = carrito.slice(0)
-        copia.push(item)
-        setCarrito(copia) */
 
         if (isInCart(item.item.id)) {
-            //Obtengo la cantidad nueva sumando la anterior con la actual
-            let nueva_cantidad = item.quantity + carrito[carrito.findIndex(element => element.item.id === item.item.id)].quantity;
-            //armo un nuevo item, con la cantidad actualizada, para insertarlo en la posicion original, pero con la cantidad actualizada
-            const nuevo_item = { ...item, quantity: nueva_cantidad };
 
-            //declaro un nuevo carrito copia del carrito anterior
-            let carrito_clon = [...carrito]
-            //reemplazo el carrito original, con el nuevo, actualizado
-            carrito_clon.splice(carrito.findIndex(element => element.item.id === item.item.id), 1, nuevo_item)
-            //seteo el carrito actualizado
-            setCarrito([...carrito_clon])
+            let nuevaCantidad = item.quantity + carrito[carrito.findIndex(element => element.item.id === item.item.id)].quantity;
+
+            const nuevoItem = { ...item, quantity: nuevaCantidad };
+            let carritoClon = [...carrito]
+            carritoClon.splice(carrito.findIndex(element => element.item.id === item.item.id), 1, nuevoItem)
+            setCarrito([...carritoClon])
 
         } else {
             setCarrito([...carrito, item])
@@ -35,11 +25,10 @@ const CustomProvider = ({ children }) => {
     }
 
 
-
     const removeItem = (itemId) => {
 
-        let carrito_actual = carrito.filter((item) => item.item.id !== itemId)
-        setCarrito([...carrito_actual])
+        let carritoActual = carrito.filter((item) => item.item.id !== itemId)
+        setCarrito([...carritoActual])
 
 
     }
@@ -52,13 +41,11 @@ const CustomProvider = ({ children }) => {
         return carrito.find(item => item.item.id === id)
     }
 
-  
-    
 
-    const contexto_para_consumir = { carrito, addItem, removeItem, clear }
+    const contexto = { carrito, addItem, removeItem, clear }
 
     return (
-        <Provider value={contexto_para_consumir}>
+        <Provider value={contexto}>
             {children}
         </Provider>
     )

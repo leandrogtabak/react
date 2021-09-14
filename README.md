@@ -10,6 +10,7 @@ Este ecommerce se encarga de la comercialización de lámparas para el hogar
 -   [react-router-dom](https://reactrouter.com/)
 -   [react-router-bootstrap](https://github.com/react-bootstrap/react-router-bootstrap/)
 -   [firebase]([https://www.npmjs.com/package/firebase](https://www.npmjs.com/package/firebase))
+-   [validator](https://www.npmjs.com/package/validator)
 
 ## Características del sitio
 
