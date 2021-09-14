@@ -19,7 +19,7 @@ Este ecommerce se encarga de la comercialización de lámparas para el hogar
 - Los datos de los productos son consumidos desde la base de datos de Firebase 
 ### Ejemplo de navegación
 
-![vídeo-gif](https://github.com/leandrogtabak/react/tree/master/raw/Master/Navegacion.gif)
+![video-navegacion](https://github.com/leandrogtabak/react/blob/master/img/Navegacion.gif)
 
 ## Instalación
 
