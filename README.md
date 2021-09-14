@@ -32,7 +32,7 @@ Clonar el proyecto y entrar en el directorio:
 
 ```
 git clone https://github.com/leandrogtabak/react
-cd coderhouse-desafio-ecommerce
+cd react
 ```
 Instalar la versión de npm recomendada (instalar nvm si hace falta):
 ```
