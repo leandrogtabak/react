@@ -34,19 +34,9 @@ Clonar el proyecto y entrar en el directorio:
 git clone https://github.com/leandrogtabak/react
 cd react
 ```
-Instalar la versión de npm recomendada (instalar nvm si hace falta):
-```
-nvm install
-```
 Instalar las dependencias:
 ```
 npm install
-```
-Duplicar el archivo  `.env.example`  como  `.env`. Poner las claves de Firebase provistas por privado.
-
-```
-cp .env.example .env
-
 ```
 
 Iniciar el servidor local:
