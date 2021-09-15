@@ -1,7 +1,7 @@
 import { createContext, useState } from "react"
 export const contexto = createContext()
 
-const { Consumer, Provider } = contexto
+const { Provider } = contexto
 
 const CustomProvider = ({ children }) => {
 

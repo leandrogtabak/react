@@ -30,7 +30,7 @@ const Formulario = () => {
         if (showOrder) {
             clear();
         }
-    }, [showOrder]);
+    }, [showOrder,clear]);
 
 
     const addOrder = (cart) => {
